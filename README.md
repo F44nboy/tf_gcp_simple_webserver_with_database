@@ -1,4 +1,6 @@
 ## !! THIS IS JUST AN EXAMPLE AND NOT READY FOR PRODUCTION USE !!
+This project automates the deployment of a basic web server and a MySQL database on Google Cloud Platform (GCP) using Terraform. It provisions a Debian-based Compute Engine instance running Apache for the web server and a Cloud SQL instance for the database, all within the GCP Free Tier. 
+
 ## How to Use This Configuration
 Initialize Terraform: Run terraform init to initialize Terraform and download the necessary providers.
 ```bash
