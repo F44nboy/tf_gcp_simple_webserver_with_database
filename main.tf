@@ -5,6 +5,8 @@ resource "google_compute_network" "vpc_network" {
 resource "google_compute_firewall" "default" {
   name    = "allow-http-ssh"
   network = google_compute_network.vpc_network.name
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["web"]
 
   allow {
     protocol = "tcp"
@@ -16,7 +18,7 @@ resource "google_compute_instance" "web_server" {
   name         = "web-server-instance"
   machine_type = var.machine_type
   zone         = var.zone
-
+  tags = ["web"]
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
@@ -30,6 +32,7 @@ resource "google_compute_instance" "web_server" {
     access_config {
       // Ephemeral public IP
     }
+  
   }
 
   metadata_startup_script = <<-EOF
